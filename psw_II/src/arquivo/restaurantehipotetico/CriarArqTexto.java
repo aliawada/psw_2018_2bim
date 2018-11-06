@@ -1,14 +1,14 @@
 package arquivo.restaurantehipotetico;
 
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Scanner;
 
-import javax.sound.midi.Soundbank;
 
 public class CriarArqTexto {
 	private FileWriter objEscrita;
+	private Scanner sc;
 	
 	public void openFile() {
 		try {
@@ -21,42 +21,49 @@ public class CriarArqTexto {
 	
 	public void adicionaRegistros() {
 		RestauranteHipotetico restaurante = new RestauranteHipotetico();
-		Scanner sc = new Scanner(System.in);
+		sc = new Scanner(System.in);
+		int x = 0;
+		BufferedWriter buffer;
 		
-		System.out.println("Informe os dados dos Restaurantes "
-				+ "(TotalMesas,PrecoBebida,PrecoPrato):");
-		
+		System.out.println("Informe os dados do Restaurante (TotalMesas,PrecoBebida,PrecoPrato):");
 		while (sc.hasNext()) { // Laço é encerrado ao ler EOF (fim do arquivo)
 			restaurante.setTotalMesas(sc.nextInt());
 			restaurante.setPrecoBebida(sc.nextFloat());
 			restaurante.setPrecoPrato(sc.nextFloat());
 			
-			System.out.println("Informe a QtdPratos em cada mesa do restaurante("+restaurante.getTotalMesas()+")");
+			try {
 			int vetor[] = new int[restaurante.getTotalMesas()]; 
+			buffer = new BufferedWriter(new FileWriter("d:\\RestauranteHipoteticoQtd.txt"));
+			
+			System.out.println("Informe a QtdPratos em cada mesa do restaurante("+restaurante.getTotalMesas()+")");		
 			for(int i=0;i<restaurante.getTotalMesas();i++) {
-				int x = 0;
 				vetor[i] = sc.nextInt();
 				if(vetor[i] > 0) {
 					x++;
 					restaurante.setMesasOcupadas(x);
-				}
+				}					
+					buffer.write(vetor[i] + " ");
 			}
-			restaurante.setQtdPratos(vetor);
 			
+			objEscrita.append( String.format("%d %.2f %.2f %d\n", restaurante.getTotalMesas(), restaurante.getPrecoBebida(),
+					restaurante.getPrecoPrato(), restaurante.getMesasOcupadas()
+					) );
+			
+			restaurante.setQtdPratos(vetor);
+			buffer.newLine();
 			System.out.println("Informe a QtdBebidas em cada mesa do restaurante("+restaurante.getTotalMesas()+")");
 			for(int i = 0;i<restaurante.getTotalMesas();i++) {
 				vetor[i] = sc.nextInt();
-			}
+				buffer.write(vetor[i] + " ");
+				}	
 			restaurante.setQtdBebidas(vetor);
-				try {
-					objEscrita.append( String.format("%d %.2f %.2f %.2f %s %s\n", restaurante.getTotalMesas(), restaurante.getPrecoBebida(),
-							restaurante.getPrecoPrato(), restaurante.getTotalVendas(), Arrays.toString(restaurante.getQtdPratos()), Arrays.toString(restaurante.getQtdBebidas())) );
-				} catch (IOException e) {
-					e.printStackTrace();
-					System.exit(0);
-				}
+			buffer.close();
+			}catch (IOException e1) {
+					e1.printStackTrace();
 			}
+			
 		}
+}
 	
 	public void closeFile() {
 		if(objEscrita != null) {
