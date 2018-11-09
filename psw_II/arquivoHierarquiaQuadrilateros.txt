@@ -1,6 +1,0 @@
- Retangulo [anglosCongruentes=a, ladosOpostosParalelos=a, base=4.0, altura=5.0]
-Área: 20.0
- Trapezio [ladosParalelos=a, baseMenor=2.0, base=4.0, altura=5.0]
-Área: 15.0
-Paralelogramo [ladosOpostosParalelos=a, base=6.0, altura=6.0]
-Área: 36.0

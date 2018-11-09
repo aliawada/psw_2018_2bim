@@ -1,2 +1,0 @@
-
-Empresa: Empresa [cnpj=cnpj, func=[[nome= awada, cpf= 013, departamento=CC, dataEntrada=20/09/2018, salario=5000.0], [nome= a, cpf= a, departamento=a, dataEntrada=1, salario=5000.0]]]

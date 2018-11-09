@@ -1,3 +1,0 @@
-totalMesas=25, precoPrato=4.625, precoBebida=3.5, totalVendas=27.875, mesasOcupadas=1, 
-qtdPratos=[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-qtdBebidas=[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
