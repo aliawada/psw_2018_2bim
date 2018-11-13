@@ -1,4 +1,4 @@
-package arquivo.hierarquia.quadrilateros;
+package arquivo.retangulo;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,7 +9,7 @@ public class CriarArqTexto {
 	
 	public void openFile() {
 		try {
-			objEscrita = new FileWriter("d:\\HierarquiaQuadrilateros.txt");
+			objEscrita = new FileWriter("d:\\Retangulo.txt");
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(0);
@@ -17,22 +17,23 @@ public class CriarArqTexto {
 	}
 	
 	public void adicionaRegistros() {
-		Quadrilatero quadrilatero = new Quadrilatero();
+		Retangulo retangulo = new Retangulo();
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("Informe os dados do Quadrilatero(base, altura):");
+		System.out.println("Informe os dados do Retangulo "
+				+ "(comprimento,largura):");
 		
 		while (sc.hasNext()) { // Laço é encerrado ao ler EOF (fim do arquivo)
-			quadrilatero.setBase(sc.nextDouble());
-			quadrilatero.setAltura(sc.nextDouble());
+			retangulo.setComprimento(sc.nextFloat());
+			retangulo.setLargura(sc.nextFloat());
+			
 				try {
-					objEscrita.append( String.format("%.2f %.2f %.2f\n", quadrilatero.getBase(),quadrilatero.getAltura(), quadrilatero.calcularArea()) );
+					objEscrita.append( String.format("%.2f %.2f %.2f %.2f\n", retangulo.getComprimento(), retangulo.getLargura(),retangulo.calcularArea(),retangulo.calcularPerimetro() ) );
 				} catch (IOException e) {
 					e.printStackTrace();
 					System.exit(0);
 				}
 			}
-		sc.close();
 		}
 	
 	public void closeFile() {

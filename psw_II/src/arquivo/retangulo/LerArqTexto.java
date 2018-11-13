@@ -1,4 +1,4 @@
-package arquivo.hierarquia.quadrilateros;
+package arquivo.retangulo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,7 +9,7 @@ public class LerArqTexto {
 	
 	public void openFile() {
 			try {
-				scanner = new Scanner( new File("d:\\HierarquiaQuadrilateros.txt") );
+				scanner = new Scanner( new File("d:\\Retangulo.txt") );
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 				System.exit(0);
@@ -24,15 +24,17 @@ public class LerArqTexto {
 	}
 	
 	public void lerArquivo() {
-		Quadrilatero quadrilatero = new Quadrilatero();
-		double area;
-		System.out.printf("Quadrilatero:\n\n");
+		Retangulo retangulo = new Retangulo();
+		float area,perim;
+		System.out.printf("Ponto2D:\n\n");
 		
 		while (scanner.hasNext()) { // Laço é encerrado ao ler EOF (fim do arquivo)
-			quadrilatero.setBase(scanner.nextDouble());
-			quadrilatero.setAltura(scanner.nextDouble());
-			area = scanner.nextDouble();
-			System.out.println(quadrilatero + "\nÁrea = " + area);
+			retangulo.setComprimento(scanner.nextFloat());
+			retangulo.setLargura(scanner.nextFloat());
+			area = scanner.nextFloat();
+			perim = scanner.nextFloat();
+			System.out.println(retangulo);
+			System.out.println("Área = " + area + "\nPerimetro = " + perim);
 		}
 	}
 }
